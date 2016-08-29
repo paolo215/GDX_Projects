@@ -28,6 +28,7 @@ import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.scenes.Hud;
 import io.github.paolo215.mariobros.sprites.Mario;
 import io.github.paolo215.mariobros.tools.B2WorldCreator;
+import io.github.paolo215.mariobros.tools.WorldContactListener;
 
 /**
  * Created by paolo on 8/26/2016.
@@ -92,6 +93,8 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
 
         player = new Mario(world, this);
+
+        world.setContactListener(new WorldContactListener());
 
     }
 
