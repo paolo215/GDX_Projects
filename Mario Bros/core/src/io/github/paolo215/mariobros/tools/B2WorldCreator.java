@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import io.github.paolo215.mariobros.MarioBros;
+import io.github.paolo215.mariobros.screens.PlayScreen;
 import io.github.paolo215.mariobros.sprites.Brick;
 import io.github.paolo215.mariobros.sprites.Coin;
 
@@ -18,7 +19,11 @@ import io.github.paolo215.mariobros.sprites.Coin;
  * Created by paolo on 8/27/2016.
  */
 public class B2WorldCreator {
-    public B2WorldCreator(World world, TiledMap map) {
+    public B2WorldCreator(PlayScreen screen) {
+        World world = screen.getWorld();
+        TiledMap map = screen.getMap();
+
+
         //need to define what body consists of
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
@@ -68,7 +73,7 @@ public class B2WorldCreator {
 
             //body
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Brick(world, map, rect);
+            new Brick(screen, rect);
         }
 
         //create coin bodies/fixtures
@@ -77,7 +82,7 @@ public class B2WorldCreator {
 
             //body
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Coin(world, map, rect);
+            new Coin(screen, rect);
         }
 
     }
