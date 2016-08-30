@@ -27,6 +27,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.scenes.Hud;
+import io.github.paolo215.mariobros.sprites.Goomba;
 import io.github.paolo215.mariobros.sprites.Mario;
 import io.github.paolo215.mariobros.tools.B2WorldCreator;
 import io.github.paolo215.mariobros.tools.WorldContactListener;
@@ -72,8 +73,9 @@ public class PlayScreen implements Screen {
 
     private Mario player;
 
-
     private Music music;
+
+    private Goomba goomba;
 
     public PlayScreen(MarioBros game) {
         atlas = new TextureAtlas("Mario_and_Enemies.pack");
@@ -104,6 +106,8 @@ public class PlayScreen implements Screen {
         music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
+
+        goomba = new Goomba(this, 0.32f, 0.32f);
     }
 
     public TextureAtlas getAtlas() {
@@ -137,6 +141,7 @@ public class PlayScreen implements Screen {
         world.step(1/60f, 6, 2);
 
         player.update(dt);
+        goomba.update(dt);
         hud.update(dt);
 
         gamecam.position.x = player.b2body.getPosition().x;
@@ -173,6 +178,7 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         //draw give game.batch to draw itself on
         player.draw(game.batch);
+        goomba.draw(game.batch);
         //end batch
         game.batch.end();
 
