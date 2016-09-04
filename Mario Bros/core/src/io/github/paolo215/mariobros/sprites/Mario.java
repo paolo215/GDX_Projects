@@ -143,7 +143,8 @@ public class Mario extends Sprite {
                 | MarioBros.COIN_BIT
                 | MarioBros.BRICK_BIT
                 | MarioBros.ENEMY_BIT
-                | MarioBros.OBJECT_BIT;
+                | MarioBros.OBJECT_BIT
+                | MarioBros.ENEMY_HEAD_BIT;
 
 
         fdef.shape = shape;
