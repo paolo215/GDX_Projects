@@ -107,7 +107,7 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.play();
 
-        goomba = new Goomba(this, 0.40f, 0.40f);
+        goomba = new Goomba(this, 3.16f, 0.16f);
     }
 
     public TextureAtlas getAtlas() {
