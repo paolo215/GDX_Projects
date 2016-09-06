@@ -27,6 +27,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.scenes.Hud;
+import io.github.paolo215.mariobros.sprites.Enemy;
 import io.github.paolo215.mariobros.sprites.Goomba;
 import io.github.paolo215.mariobros.sprites.Mario;
 import io.github.paolo215.mariobros.tools.B2WorldCreator;
@@ -55,6 +56,7 @@ public class PlayScreen implements Screen {
     private MarioBros game;
     private TextureAtlas atlas;
 
+    private Music music;
 
     //playscreen
     private OrthographicCamera gamecam;
@@ -70,12 +72,10 @@ public class PlayScreen implements Screen {
     //Box2d
     private World world;
     private Box2DDebugRenderer b2dr;
+    private B2WorldCreator creator;
 
     private Mario player;
 
-    private Music music;
-
-    private Goomba goomba;
 
     public PlayScreen(MarioBros game) {
         atlas = new TextureAtlas("Mario_and_Enemies.pack");
@@ -95,7 +95,7 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
 
-        new B2WorldCreator(this);
+        creator = new B2WorldCreator(this);
 
         player = new Mario(this);
 
@@ -107,7 +107,6 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.play();
 
-        goomba = new Goomba(this, 3.16f, 0.16f);
     }
 
     public TextureAtlas getAtlas() {
@@ -141,7 +140,10 @@ public class PlayScreen implements Screen {
         world.step(1/60f, 6, 2);
 
         player.update(dt);
-        goomba.update(dt);
+        for(Enemy enemy : creator.getGoombas()) {
+            enemy.update(dt);
+        }
+
         hud.update(dt);
 
         gamecam.position.x = player.b2body.getPosition().x;
@@ -178,7 +180,9 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         //draw give game.batch to draw itself on
         player.draw(game.batch);
-        goomba.draw(game.batch);
+        for(Enemy enemy : creator.getGoombas()) {
+            enemy.draw(game.batch);
+        }
         //end batch
         game.batch.end();
 
