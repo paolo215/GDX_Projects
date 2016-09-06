@@ -1,4 +1,4 @@
-package io.github.paolo215.mariobros.sprites;
+package io.github.paolo215.mariobros.sprites.enemies;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -22,6 +22,9 @@ public abstract class Enemy extends Sprite {
         setPosition(x, y);
         defineEnemy();
         velocity = new Vector2(1, 0);
+
+        //puts b2body to sleep until it gets woken up
+        b2body.setActive(false);
     }
 
     protected  abstract void defineEnemy();

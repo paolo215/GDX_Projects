@@ -13,9 +13,9 @@ import com.badlogic.gdx.utils.Array;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.screens.PlayScreen;
-import io.github.paolo215.mariobros.sprites.Brick;
-import io.github.paolo215.mariobros.sprites.Coin;
-import io.github.paolo215.mariobros.sprites.Goomba;
+import io.github.paolo215.mariobros.sprites.tileobjects.Brick;
+import io.github.paolo215.mariobros.sprites.tileobjects.Coin;
+import io.github.paolo215.mariobros.sprites.enemies.Goomba;
 
 /**
  * Created by paolo on 8/27/2016.

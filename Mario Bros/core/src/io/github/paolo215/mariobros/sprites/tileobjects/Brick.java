@@ -1,10 +1,8 @@
-package io.github.paolo215.mariobros.sprites;
+package io.github.paolo215.mariobros.sprites.tileobjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.World;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.scenes.Hud;
