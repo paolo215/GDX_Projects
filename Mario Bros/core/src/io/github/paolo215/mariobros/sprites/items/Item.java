@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.screens.PlayScreen;
+import io.github.paolo215.mariobros.sprites.Mario;
 
 /**
  * Created by paolo on 9/10/2016.
@@ -32,7 +33,7 @@ public abstract class Item extends Sprite {
 
     public abstract void defineItem();
 
-    public abstract void use();
+    public abstract void use(Mario mario);
 
     public void update(float dt) {
         if(toDestroy == true && destroyed == false) {
@@ -49,5 +50,15 @@ public abstract class Item extends Sprite {
 
     public void destroy() {
         toDestroy = true;
+    }
+
+    public void reverseVelocity(boolean x, boolean y) {
+        if(x == true) {
+            velocity.x = -velocity.x;
+        }
+
+        if(y == true) {
+            velocity.y = -velocity.y;
+        }
     }
 }

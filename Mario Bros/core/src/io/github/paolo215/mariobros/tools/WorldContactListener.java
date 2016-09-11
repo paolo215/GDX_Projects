@@ -8,7 +8,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import io.github.paolo215.mariobros.MarioBros;
+import io.github.paolo215.mariobros.sprites.Mario;
 import io.github.paolo215.mariobros.sprites.enemies.Enemy;
+import io.github.paolo215.mariobros.sprites.items.Item;
 import io.github.paolo215.mariobros.sprites.tileobjects.InteractiveTileObject;
 
 /**
@@ -60,6 +62,23 @@ public class WorldContactListener implements ContactListener{
                 ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
                 ((Enemy) fixB.getUserData()).reverseVelocity(true, false);
                 break;
+
+            case MarioBros.ITEM_BIT | MarioBros.OBJECT_BIT:
+                if(fixA.getFilterData().categoryBits == MarioBros.ITEM_BIT) {
+                    ((Item) fixA.getUserData()).reverseVelocity(true, false);
+                } else {
+                    ((Item) fixB.getUserData()).reverseVelocity(true, false);
+                }
+                break;
+
+            case MarioBros.ITEM_BIT | MarioBros.MARIO_BIT:
+                if(fixA.getFilterData().categoryBits == MarioBros.ITEM_BIT) {
+                    ((Item) fixA.getUserData()).use((Mario) fixB.getUserData());
+                } else {
+                    ((Item) fixB.getUserData()).use((Mario) fixA.getUserData());
+                }
+                break;
+
         }
     }
 
