@@ -40,7 +40,7 @@ public class Mario extends Sprite {
 
 
     public Mario(PlayScreen screen) {
-        super(screen.getAtlas().findRegion("little_mario"));
+        super(screen.getAtlas().findRegion("turtle"));
         this.world = screen.getWorld();
         currentState = State.STANDING;
         previousState = State.STANDING;
