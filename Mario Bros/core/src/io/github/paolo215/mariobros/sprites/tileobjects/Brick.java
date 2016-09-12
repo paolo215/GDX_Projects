@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.scenes.Hud;
 import io.github.paolo215.mariobros.screens.PlayScreen;
+import io.github.paolo215.mariobros.sprites.Mario;
 
 /**
  * Created by paolo on 8/27/2016.
@@ -20,12 +21,15 @@ public class Brick extends InteractiveTileObject {
     }
 
     @Override
-    public void onHeadHit() {
-        Gdx.app.log("Brick", "Brick collision");
-        setCategoryFilter(MarioBros.DESTROYED_BIT);
-        getCell().setTile(null);
-        Hud.addScore(200);
+    public void onHeadHit(Mario mario) {
 
-        MarioBros.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
+        if(mario.isBig()) {
+            setCategoryFilter(MarioBros.DESTROYED_BIT);
+            getCell().setTile(null);
+            Hud.addScore(200);
+            MarioBros.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
+        } else {
+            MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
+        }
     }
 }

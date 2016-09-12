@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import io.github.paolo215.mariobros.MarioBros;
 import io.github.paolo215.mariobros.screens.PlayScreen;
+import io.github.paolo215.mariobros.sprites.Mario;
 
 /**
  * Created by paolo on 8/27/2016.
@@ -53,7 +54,7 @@ public abstract class InteractiveTileObject {
         fixture = body.createFixture(fdef);
     }
 
-    public abstract void onHeadHit();
+    public abstract void onHeadHit(Mario mario);
 
     public void setCategoryFilter(short filterBit) {
         Filter filter = new Filter();
