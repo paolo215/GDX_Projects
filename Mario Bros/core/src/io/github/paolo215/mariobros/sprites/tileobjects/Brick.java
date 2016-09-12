@@ -2,6 +2,7 @@ package io.github.paolo215.mariobros.sprites.tileobjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.math.Rectangle;
 
 import io.github.paolo215.mariobros.MarioBros;
@@ -12,8 +13,8 @@ import io.github.paolo215.mariobros.screens.PlayScreen;
  * Created by paolo on 8/27/2016.
  */
 public class Brick extends InteractiveTileObject {
-    public Brick(PlayScreen screen, Rectangle bounds) {
-        super(screen, bounds);
+    public Brick(PlayScreen screen, MapObject object) {
+        super(screen, object);
         fixture.setUserData(this);
         setCategoryFilter(MarioBros.BRICK_BIT);
     }

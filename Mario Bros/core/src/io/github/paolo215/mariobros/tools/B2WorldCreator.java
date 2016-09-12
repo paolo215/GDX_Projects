@@ -77,18 +77,15 @@ public class B2WorldCreator {
         for(MapObject object : map.getLayers().get(5).getObjects()
                 .getByType(RectangleMapObject.class)) {
 
-            //body
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Brick(screen, rect);
+
+            new Brick(screen, object);
         }
 
         //create coin bodies/fixtures
         for(MapObject object : map.getLayers().get(4).getObjects()
                 .getByType(RectangleMapObject.class)) {
 
-            //body
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Coin(screen, rect);
+            new Coin(screen, object);
         }
 
         //create all goombas
